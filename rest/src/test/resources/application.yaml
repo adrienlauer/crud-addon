@@ -20,3 +20,18 @@ classes:
           fixtures:
             model:
               defaultRepository: org.seedstack.business.util.inmemory.InMemory
+              defaultRepository<jpa>: org.seedstack.jpa.Jpa
+              defaultRepository<mongo>: org.seedstack.mongodb.morphia.Morphia
+
+jdbc<jpa>:
+  datasources:
+    ds1:
+      url: jdbc:hsqldb:mem:testdb1
+
+jpa<jpa>:
+  units:
+    unit1:
+      datasource: ds1
+      properties:
+        hibernate.dialect: org.hibernate.dialect.HSQLDialect
+        hibernate.hbm2ddl.auto: create

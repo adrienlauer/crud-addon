@@ -9,7 +9,7 @@
 package org.seedstack.crud.rest.fixtures.model.animal;
 
 public class Cat extends Animal {
-  public Cat(AnimalId id) {
-    super(id);
-  }
+    public Cat(AnimalId id) {
+        super(id);
+    }
 }

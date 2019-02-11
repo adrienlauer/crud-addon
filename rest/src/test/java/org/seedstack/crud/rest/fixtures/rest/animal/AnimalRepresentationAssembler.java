@@ -12,16 +12,16 @@ import org.seedstack.business.assembler.BaseAssembler;
 import org.seedstack.crud.rest.fixtures.model.animal.Animal;
 
 public abstract class AnimalRepresentationAssembler<A extends Animal, R extends AnimalRepresentation>
-    extends BaseAssembler<A, R> {
+        extends BaseAssembler<A, R> {
 
-  @Override
-  public void mergeAggregateIntoDto(A a, R r) {
-    r.setName(a.getId().getPetName());
-    r.setDaysInHome(a.getDaysInHome());
-  }
+    @Override
+    public void mergeAggregateIntoDto(A a, R r) {
+        r.setName(a.getId().getPetName());
+        r.setDaysInHome(a.getDaysInHome());
+    }
 
-  @Override
-  public void mergeDtoIntoAggregate(R r, A a) {
-    a.setDaysInHome(r.getDaysInHome());
-  }
+    @Override
+    public void mergeDtoIntoAggregate(R r, A a) {
+        a.setDaysInHome(r.getDaysInHome());
+    }
 }

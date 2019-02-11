@@ -8,12 +8,16 @@
 
 package org.seedstack.crud.rest.fixtures.rest.customer;
 
+import javax.transaction.Transactional;
 import javax.ws.rs.Path;
 import org.seedstack.crud.rest.BaseCrudResource;
 import org.seedstack.crud.rest.fixtures.model.customer.Customer;
 import org.seedstack.crud.rest.fixtures.model.customer.CustomerId;
+import org.seedstack.jpa.JpaUnit;
 
-@Path("/customers")
-public class CustomerResource
+@Path("/jpa-customers")
+@Transactional
+@JpaUnit("unit1")
+public class CustomerJpaResource
         extends BaseCrudResource<Customer, CustomerId, CustomerRepresentation> {
 }

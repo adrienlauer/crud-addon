@@ -11,5 +11,5 @@ package org.seedstack.crud.rest.fixtures.rest.animal;
 import org.seedstack.crud.rest.fixtures.model.animal.Bug;
 
 public class BugRepresentationAssembler
-    extends AnimalRepresentationAssembler<Bug, BugRepresentation> {
+        extends AnimalRepresentationAssembler<Bug, BugRepresentation> {
 }

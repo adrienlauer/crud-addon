@@ -9,10 +9,8 @@
 package org.seedstack.crud.rest;
 
 import static io.restassured.RestAssured.given;
-import static org.junit.Assert.*;
 
 import javax.inject.Inject;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,47 +25,47 @@ import org.seedstack.seed.undertow.LaunchWithUndertow;
 @RunWith(SeedITRunner.class)
 @LaunchWithUndertow
 public class ImplicitCreateResourceIT {
-  @Configuration("web.runtime.baseUrl")
-  private String url;
+    @Configuration("runtime.web.baseUrl")
+    private String url;
 
-  @Inject
-  private Repository<Bird, AnimalId> birdRepository;
+    @Inject
+    private Repository<Bird, AnimalId> birdRepository;
 
-  @Test
-  public void testCreate() {
-    given().body("{\"name\":\"ducky\"}")
-        .contentType("application/json")
-        .when()
-        .post(url + "birds")
-        .then()
-        .statusCode(201)
-        .header("Location", url + "birds/ducky");
-  }
+    @Test
+    public void testCreate() {
+        given().body("{\"name\":\"ducky\"}")
+                .contentType("application/json")
+                .when()
+                .post(url + "/birds")
+                .then()
+                .statusCode(201)
+                .header("Location", url + "/birds/ducky");
+    }
 
-  @Test
-  public void testDuplicate() throws Exception {
-    given().body("{\"name\":\"ducky\"}")
-        .contentType("application/json")
-        .when()
-        .post(url + "birds")
-        .then()
-        .statusCode(201)
-        .header("Location", url + "birds/ducky");
-    given().body("{\"name\":\"ducky\"}")
-        .contentType("application/json")
-        .when()
-        .post(url + "birds")
-        .then()
-        .statusCode(409);
-  }
+    @Test
+    public void testDuplicate() throws Exception {
+        given().body("{\"name\":\"ducky\"}")
+                .contentType("application/json")
+                .when()
+                .post(url + "/birds")
+                .then()
+                .statusCode(201)
+                .header("Location", url + "/birds/ducky");
+        given().body("{\"name\":\"ducky\"}")
+                .contentType("application/json")
+                .when()
+                .post(url + "/birds")
+                .then()
+                .statusCode(409);
+    }
 
-  @Before
-  public void setUp() {
-    birdRepository.add(new Bird(new AnimalId("tweety")));
-  }
+    @Before
+    public void setUp() {
+        birdRepository.add(new Bird(new AnimalId("tweety")));
+    }
 
-  @After
-  public void tearDown() {
-    birdRepository.clear();
-  }
+    @After
+    public void tearDown() {
+        birdRepository.clear();
+    }
 }
